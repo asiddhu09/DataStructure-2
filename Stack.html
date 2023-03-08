@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>stack</title>
+</head>
+
+<body>
+  <h1>Implementation of Stack in JavaScript.</h1>
+  <div class="result"></div>
+  <br/>
+  <input type="text" class="stackPush" />
+  <button class="pushBtn">Push</button>
+  <button class="popBtn">Pop</button>
+  <h3>Click on the above buttons to perform stack operations</h3>
+
+  <script>
+
+    let resEle = document.querySelector(".result");
+    let BtnEle = document.querySelector(".Btn");
+    let pushBtnEle = document.querySelector(".pushBtn");
+    let popBtnEle = document.querySelector(".popBtn");
+
+
+
+    let data = [];
+    let currentSize = data.length;
+    let max = 10;
+
+
+    function push() {
+      let newVal = document.querySelector(".stackPush").value;
+      if (currentSize >= max) {
+        alert("Stack is full you can not add" + newVal);
+      } else {
+        data[currentSize] = newVal;
+        currentSize += 1;
+        resEle.innerHTML = data;
+      }
+      console.log(data);
+    }
+
+    pushBtnEle.addEventListener('click', push);
+
+
+
+    function pop() {
+      if (currentSize > 0) {
+        currentSize -= 1;
+        data.length = currentSize;
+        resEle.innerHTML = data;
+      }
+      else {
+        alert("stack is already empty");
+      }
+      console.log(data);
+    }
+
+    popBtnEle.addEventListener('click', pop);
+  </script>
+</body>
+
+</html>

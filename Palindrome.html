@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Welcome to Queue</h1>
+    <p>Insert the value in the input field and then click the push or pop button to add or delete the value from queue</p>
+    <input  class="input"/>
+    <button class="pushBtn">Push</button>
+    <button class="popBtn">Pop</button>
+    <div class="display"></div>
+    <script>
+        let pushBtn = document.querySelector('.pushBtn');
+        let popBtn = document.querySelector('.popBtn');
+        let display = document.querySelector('.display');
+
+
+
+
+        let queue = [];
+        let currentSize = queue.length;
+        let maxSize = 5;
+
+
+        function enqueue() {
+            let input = document.querySelector('.input').value;
+
+            if (currentSize >= maxSize) {
+                alert("Queue is already full");
+            }
+            else {
+                queue[currentSize] = input;
+                currentSize++;
+                display.innerHTML = queue;
+
+            }
+            console.log(queue)
+        }
+
+        pushBtn.addEventListener('click', enqueue);
+
+
+        function dequeue() {
+            if (currentSize > 0) {
+                for (let i = 0; i < queue.length; i++) {
+                    queue[i] = queue[i + 1];
+                }
+                currentSize--;
+                queue.length = currentSize;
+                display.innerHTML = queue;
+            }
+            else {
+                alert("queue is already empty");
+            }
+        }
+
+        popBtn.addEventListener('click', dequeue);
+    </script>
+</body>
+
+</html>
